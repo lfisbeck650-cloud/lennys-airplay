@@ -106,7 +106,7 @@ sudo apt-get install -f
 sudo rpm -i lennys-airplay-1.0.0-1.noarch.rpm
 ```
 
-#### Alpine (.xbps)
+#### Void Linux (.xbps)
 
 ```bash
 sudo xbps-install -f lennys-airplay
