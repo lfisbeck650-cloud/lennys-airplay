@@ -1,4 +1,4 @@
-# AirPlay Screen Mirror
+# Lennys AirPlay
 
 A simple Python application to mirror your iPhone/iPad screen to your PC via AirPlay.
 
@@ -15,7 +15,6 @@ A simple Python application to mirror your iPhone/iPad screen to your PC via Air
 ### Linux (Ubuntu/Debian)
 
 ```bash
-# Install UxPlay dependencies
 sudo apt update
 sudo apt install -y \
     git \
@@ -31,41 +30,39 @@ sudo apt install -y \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-libav \
     gstreamer1.0-tools
+```
 
-# Clone and build UxPlay
-git clone https://github.com/FDH2/UxPlay.git
-cd UxPlay
-mkdir build && cd build
-cmake ..
-make
-sudo make install
+### Linux (Alpine)
+
+```bash
+sudo apk add \
+    build-base \
+    cmake \
+    openssl-dev \
+    avahi-dev \
+    libplist-dev \
+    gstreamer-dev \
+    gst-plugins-base-dev \
+    gst-plugins-good \
+    gst-plugins-bad-dev \
+    gst-plugins-ugly \
+    gst-libav
 ```
 
 ### macOS
 
 ```bash
-# Install dependencies with Homebrew
 brew install cmake openssl avahi libplist gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-libav
-
-# Clone and build UxPlay
-git clone https://github.com/FDH2/UxPlay.git
-cd UxPlay
-mkdir build && cd build
-cmake ..
-make
-sudo make install
 ```
-
-### Windows (WSL)
-
-Use WSL2 and follow the Linux instructions above.
 
 ## Installation
 
+### From Source
+
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/airplay-mirror.git
-cd airplay-mirror
+git clone https://github.com/lennyfisbeck/lennys-airplay.git
+cd lennys-airplay
 ```
 
 2. Create a virtual environment (optional but recommended):
@@ -79,11 +76,59 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+4. Build and install UxPlay:
+```bash
+git clone https://github.com/FDH2/UxPlay.git
+cd UxPlay
+mkdir build && cd build
+cmake ..
+make
+sudo make install
+```
+
+5. Run the application:
+```bash
+python main.py
+```
+
+### From Package
+
+#### Debian/Ubuntu (.deb)
+
+```bash
+sudo dpkg -i lennys-airplay_1.0.0_all.deb
+sudo apt-get install -f
+```
+
+#### Fedora/RHEL (.rpm)
+
+```bash
+sudo rpm -i lennys-airplay-1.0.0-1.noarch.rpm
+```
+
+#### Alpine (.xbps)
+
+```bash
+sudo xbps-install -f lennys-airplay
+```
+
+#### AppImage
+
+```bash
+chmod +x LennysAirPlay-1.0.0-x86_64.AppImage
+./LennysAirPlay-1.0.0-x86_64.AppImage
+```
+
 ## Usage
 
 Run the application:
 ```bash
 python main.py
+```
+
+Or if installed globally:
+```bash
+lennys-airplay
 ```
 
 ### Menu Options
@@ -117,6 +162,18 @@ Settings are stored in `config.json`:
 }
 ```
 
+## Building Packages
+
+To build all packages, run:
+```bash
+./build.sh
+```
+
+This creates:
+- `dist/lennys-airplay_1.0.0_all.deb` (Debian/Ubuntu)
+- `dist/lennys-airplay-1.0.0-1.noarch.rpm` (Fedora/RHEL)
+- `dist/LennysAirPlay-1.0.0-x86_64.AppImage` (AppImage)
+
 ## Troubleshooting
 
 ### Device not found
@@ -140,4 +197,3 @@ MIT License
 ## Credits
 
 - [UxPlay](https://github.com/FDH2/UxPlay) - AirPlay receiver implementation
-- [pyatv](https://github.com/postlund/pyatv) - Apple TV library

@@ -1,5 +1,1 @@
-# AirPlay Screen Mirror - Python Dependencies
-# Install with: pip install -r requirements.txt
-
-# No additional Python packages required
-# The program uses UxPlay as the AirPlay receiver backend
+No additional Python packages required
