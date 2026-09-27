@@ -35,12 +35,12 @@ class AirPlayReceiver:
             "uxplay",
             "-n", self.config.device_name,
             "-p", str(self.config.port),
-            "-r", self.config.resolution,
-            "-f", str(self.config.fps),
+            "-s", self.config.resolution,
+            "-fps", str(self.config.fps),
         ]
 
         if self.config.password:
-            cmd.extend(["-a", self.config.password])
+            cmd.extend(["-pw", self.config.password])
 
         try:
             self.process = subprocess.Popen(
